@@ -704,28 +704,17 @@
         "parameters": [
           {
             "type": "string",
-            "description": "The user's password.",
-            "name": "password",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "description": "Identifier is the email or username of the user trying to log in.",
-            "name": "identifier",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "description": "Sending the anti-csrf token is only required for browser login flows.",
-            "name": "csrf_token",
-            "in": "query"
-          },
-          {
-            "type": "string",
             "description": "The Flow ID",
             "name": "flow",
             "in": "query",
             "required": true
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/CompleteSelfServiceLoginFlowWithPasswordMethod"
+            }
           }
         ],
         "responses": {
@@ -1072,8 +1061,7 @@
             "name": "Payload",
             "in": "body",
             "schema": {
-              "type": "object",
-              "additionalProperties": true
+              "type": "object"
             }
           }
         ],
@@ -1335,6 +1323,21 @@
         ],
         "summary": "Complete Settings Flow with Profile Method",
         "operationId": "completeSelfServiceSettingsFlowWithProfileMethod",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Flow is flow ID.",
+            "name": "flow",
+            "in": "query"
+          },
+          {
+            "name": "Payload",
+            "in": "body",
+            "schema": {
+              "type": "object"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "settingsFlow",
@@ -1630,7 +1633,7 @@
               "$ref": "#/definitions/session"
             }
           },
-          "403": {
+          "401": {
             "description": "genericError",
             "schema": {
               "$ref": "#/definitions/genericError"
@@ -1668,6 +1671,23 @@
     }
   },
   "definitions": {
+    "CompleteSelfServiceLoginFlowWithPasswordMethod": {
+      "type": "object",
+      "properties": {
+        "csrf_token": {
+          "description": "Sending the anti-csrf token is only required for browser login flows.",
+          "type": "string"
+        },
+        "identifier": {
+          "description": "Identifier is the email or username of the user trying to log in.",
+          "type": "string"
+        },
+        "password": {
+          "description": "The user's password.",
+          "type": "string"
+        }
+      }
+    },
     "CompleteSelfServiceSettingsFlowWithPasswordMethod": {
       "type": "object",
       "required": [
@@ -1721,30 +1741,6 @@
       "description": "and so on.",
       "type": "string",
       "title": "CredentialsType  represents several different credential types, like password credentials, passwordless credentials,"
-    },
-    "FlowMethodConfig": {
-      "type": "object",
-      "required": [
-        "action",
-        "method",
-        "fields"
-      ],
-      "properties": {
-        "action": {
-          "description": "Action should be used as the form action URL `\u003cform action=\"{{ .Action }}\" method=\"post\"\u003e`.",
-          "type": "string"
-        },
-        "fields": {
-          "$ref": "#/definitions/formFields"
-        },
-        "messages": {
-          "$ref": "#/definitions/Messages"
-        },
-        "method": {
-          "description": "Method is the form method (e.g. POST)",
-          "type": "string"
-        }
-      }
     },
     "ID": {
       "type": "integer",
@@ -2500,10 +2496,34 @@
       ],
       "properties": {
         "config": {
-          "$ref": "#/definitions/FlowMethodConfig"
+          "$ref": "#/definitions/settingsFlowMethodConfig"
         },
         "method": {
           "description": "Method is the name of this flow method.",
+          "type": "string"
+        }
+      }
+    },
+    "settingsFlowMethodConfig": {
+      "type": "object",
+      "required": [
+        "action",
+        "method",
+        "fields"
+      ],
+      "properties": {
+        "action": {
+          "description": "Action should be used as the form action URL `\u003cform action=\"{{ .Action }}\" method=\"post\"\u003e`.",
+          "type": "string"
+        },
+        "fields": {
+          "$ref": "#/definitions/formFields"
+        },
+        "messages": {
+          "$ref": "#/definitions/Messages"
+        },
+        "method": {
+          "description": "Method is the form method (e.g. POST)",
           "type": "string"
         }
       }
@@ -2625,7 +2645,7 @@
   "securityDefinitions": {
     "sessionToken": {
       "type": "apiKey",
-      "name": "Authorization",
+      "name": "X-Session-Token",
       "in": "header"
     }
   },

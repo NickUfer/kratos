@@ -35,12 +35,13 @@
   "Administration": ["admin/managing-users-identities"],
   "Guides": [
     "guides/sign-in-with-github-google-facebook-linkedin", 
-    "guides/zero-trust-iap-proxy-identity-access-proxy", 
+    "guides/login-session", 
+    "guides/configuring-cookies", 
+    "guides/setting-up-cors", 
     "guides/account-recovery-password-reset", 
     "guides/account-activation-email-verification", 
+    "guides/zero-trust-iap-proxy-identity-access-proxy", 
     "guides/multi-tenancy-multitenant", 
-    "guides/configuring-cookies", 
-    "guides/login-session", 
     "guides/secret-key-rotation", 
     "guides/high-availability-ha", 
     "guides/docker"
@@ -50,60 +51,6 @@
     "reference/json-schema-json-paths", 
     "reference/html-forms", 
     "reference/api", 
-    {
-      "items": [
-        "cli/kratos", 
-        "cli/kratos-identities", 
-        "cli/kratos-identities-delete", 
-        "cli/kratos-identities-get", 
-        "cli/kratos-identities-import", 
-        "cli/kratos-identities-list", 
-        "cli/kratos-identities-patch", 
-        "cli/kratos-identities-validate", 
-        "cli/kratos-jsonnet", 
-        "cli/kratos-jsonnet-format", 
-        "cli/kratos-jsonnet-lint", 
-        "cli/kratos-remote", 
-        "cli/kratos-remote-status", 
-        "cli/kratos-remote-version"
-      ]
-    }, 
-    {
-      "items": [
-        "cli/kratos", 
-        "cli/kratos-identities", 
-        "cli/kratos-identities-delete", 
-        "cli/kratos-identities-get", 
-        "cli/kratos-identities-list", 
-        "cli/kratos-identities-patch", 
-        "cli/kratos-identities-put", 
-        "cli/kratos-identities-validate", 
-        "cli/kratos-jsonnet", 
-        "cli/kratos-jsonnet-format", 
-        "cli/kratos-jsonnet-lint", 
-        "cli/kratos-remote", 
-        "cli/kratos-remote-status", 
-        "cli/kratos-remote-version"
-      ]
-    }, 
-    {
-      "items": [
-        "cli/kratos", 
-        "cli/kratos-identities", 
-        "cli/kratos-identities-delete", 
-        "cli/kratos-identities-get", 
-        "cli/kratos-identities-import", 
-        "cli/kratos-identities-list", 
-        "cli/kratos-identities-patch", 
-        "cli/kratos-identities-validate", 
-        "cli/kratos-jsonnet", 
-        "cli/kratos-jsonnet-format", 
-        "cli/kratos-jsonnet-lint", 
-        "cli/kratos-remote", 
-        "cli/kratos-remote-status", 
-        "cli/kratos-remote-version"
-      ]
-    }, 
     {
       "items": [
         "cli/kratos", 
